@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Ppet{
 
-    private int id;
+    private long id;
     private Pcategory category;
     private String name;
     private List<String> photoUrls;
     private List<Ptag> tags;
     private String status;
 
-    public Ppet(int id, Pcategory category, String name, List<String> photoUrls, List<Ptag> tags, String status) {
+    public Ppet(long id, Pcategory category, String name, List<String> photoUrls, List<Ptag> tags, String status) {
         this.id = id;
         this.category = category;
         this.name = name;
@@ -20,11 +20,14 @@ public class Ppet{
         this.status = status;
     }
 
-    public int getId() {
+    public Ppet() {
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

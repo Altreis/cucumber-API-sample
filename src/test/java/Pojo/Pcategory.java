@@ -9,6 +9,9 @@ public class Pcategory {
         this.name = name;
     }
 
+    public Pcategory() {
+    }
+
     public int getId() {
         return id;
     }

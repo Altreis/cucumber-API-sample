@@ -9,6 +9,9 @@ public class Ptag {
                 this.name = name;
         }
 
+        public Ptag() {
+        }
+
         public int getId() {
                 return id;
         }

@@ -18,7 +18,7 @@ public class ConnectionsTools {
         URL url = new URL(urlAPI);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod(request);
-
+        if (con.getResponseCode() == 404 && !exists) return String.valueOf(con.getResponseCode());
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
         String inputLine;
@@ -40,7 +40,7 @@ public class ConnectionsTools {
 
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod(request);
-        con.setRequestProperty("Content-Type", "application/json; utf-8");
+        con.setRequestProperty("Content-Type", "application/json");
         con.setRequestProperty("Accept", "application/json");
         con.setDoOutput(true);
 

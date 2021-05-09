@@ -44,8 +44,8 @@ public class BaseStep {
     }
 
     public void checkPet(Ppet ppet, boolean exists) throws Exception{
-        if (exists) assertEquals(error, connectionsTools.getJson(baseUrl + "/" + ppet.getId(), delete, true), ok);
-        else assertEquals(error, connectionsTools.getJson(baseUrl + "/" + ppet.getId(), delete, false), "404");
+        if (exists) assertEquals(error, connectionsTools.getJson(baseUrl + "/" + ppet.getId(), get, true), ok);
+        else assertEquals(error, connectionsTools.getJson(baseUrl + "/" + ppet.getId(), get, false), "404");
     }
 
     public void deletePet(Ppet ppet) throws Exception {
