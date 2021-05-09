@@ -22,16 +22,14 @@ public class MainPageStep {
         mainPage.createNewPet(arg1);
     }
 
-    @When("^Change the pet status to sold$")
-    public void change_the_pet_status_to_sold() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @When("^Change the pet status to \"([^\"]*)\"$")
+    public void change_the_pet_status_to(String arg1) throws Throwable {
+        mainPage.changePetStatus(arg1);
     }
 
     @Then("^Delete the pet$")
     public void delete_the_pet() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        mainPage.deletePet();
     }
 
 }

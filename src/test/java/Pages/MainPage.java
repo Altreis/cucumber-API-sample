@@ -1,9 +1,7 @@
 package Pages;
 
 import Base.BaseStep;
-import Environment.GlobalVariables;
 import Pojo.Ppet;
-import Tools.ConnectionsTools;
 
 
 import java.io.IOException;
@@ -19,6 +17,17 @@ public class  MainPage {
 
     public void createNewPet(String name) throws Exception {
         pet = baseStep.createNewPet(name);
+        baseStep.checkPet(pet, true);
+    }
+
+    public void changePetStatus(String status) throws Exception {
+        pet = baseStep.changePet(pet, status);
+        baseStep.checkPet(pet, true);
+    }
+
+    public void deletePet() throws Exception {
+        baseStep.deletePet(pet);
+        baseStep.checkPet(pet, false);
     }
 
 }
