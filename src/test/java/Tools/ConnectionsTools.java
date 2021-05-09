@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class ConnectionsTools {
 
-    private String error = "Something went wrong.";
+    private static final String ERROR = "Something went wrong.";
 
     public String getJson(String urlAPI, String request, boolean exists) throws IOException {
         URL url = new URL(urlAPI);
@@ -26,7 +26,7 @@ public class ConnectionsTools {
         while ((inputLine = in.readLine()) != null) {
             content.append(inputLine);
         }
-        if (con.getResponseCode() != 200 && exists) throw new Error(error + "Error code '" + String.valueOf(con.getResponseCode()) + "' , with the message '" + con.getResponseMessage() + "'");
+        if (con.getResponseCode() != 200 && exists) throw new Error(ERROR + "Error code '" + String.valueOf(con.getResponseCode()) + "' , with the message '" + con.getResponseMessage() + "'");
         in.close();
         con.disconnect();
 
@@ -51,7 +51,7 @@ public class ConnectionsTools {
             os.write(input, 0, input.length);
         }
 
-        if (con.getResponseCode() != 200) throw new Error(error + " Error code '" + String.valueOf(con.getResponseCode()) + "' , with the message '" + con.getResponseMessage() + "'");
+        if (con.getResponseCode() != 200) throw new Error(ERROR + " Error code '" + String.valueOf(con.getResponseCode()) + "' , with the message '" + con.getResponseMessage() + "'");
 
         try(BufferedReader br = new BufferedReader(
                 new InputStreamReader(con.getInputStream(), "utf-8"))) {

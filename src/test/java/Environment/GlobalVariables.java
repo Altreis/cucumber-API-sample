@@ -3,15 +3,15 @@ package Environment;
 
 public class GlobalVariables {
 
-    private String baseUrl = "https://petstore.swagger.io/v2/pet";
-    private String getList = "/findByStatus?status=available";
+    private static final String BASE_URL = "https://petstore.swagger.io/v2/pet";
+    private static final String GET_LIST = "/findByStatus?status=available";
 
     public String getBaseUrl() {
-        return baseUrl;
+        return BASE_URL;
     }
 
     public String getGetList() {
-        return getList;
+        return GET_LIST;
     }
 
 

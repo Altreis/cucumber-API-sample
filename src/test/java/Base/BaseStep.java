@@ -17,39 +17,39 @@ public class BaseStep {
     ConnectionsTools connectionsTools = new ConnectionsTools();
 
     private String baseUrl = globalVariables.getBaseUrl();
-    private String available = "available";
-    private String get = "GET";
-    private String put = "PUT";
-    private String post = "POST";
-    private String delete = "DELETE";
-    private String ok = "200";
-    private String error = "The petition to the API failed";
+    private static final String AVAILABLE = "available";
+    private static final String GET = "GET";
+    private static final String PUT = "PUT";
+    private static final String POST = "POST";
+    private static final String DELETE = "DELETE";
+    private static final String OK = "200";
+    private static final String ERROR = "The petition to the API failed";
 
     public void loadAllPets() throws IOException {
-        assertEquals(error, connectionsTools.getJson(baseUrl + globalVariables.getGetList(), get, true), ok);
+        assertEquals(ERROR, connectionsTools.getJson(baseUrl + globalVariables.getGetList(), GET, true), OK);
     }
 
     public Ppet createNewPet(String name) throws Exception {
-        Ppet ppet = new Ppet(0, new Pcategory(0, ""), name, new ArrayList<>(), new ArrayList<>(), available);
-        ppet = connectionsTools.postJson(ppet, baseUrl, post);
-        assertNotEquals(error, String.valueOf(ppet.getId()), "0");
+        Ppet ppet = new Ppet(0, new Pcategory(0, ""), name, new ArrayList<>(), new ArrayList<>(), AVAILABLE);
+        ppet = connectionsTools.postJson(ppet, baseUrl, POST);
+        assertNotEquals(ERROR, String.valueOf(ppet.getId()), "0");
         return ppet;
     }
 
     public Ppet changePet(Ppet ppet, String status) throws Exception {
         ppet.setStatus(status);
-        ppet = connectionsTools.postJson(ppet, baseUrl, put);
-        assertNotEquals(error, String.valueOf(ppet.getId()), "0");
+        ppet = connectionsTools.postJson(ppet, baseUrl, PUT);
+        assertNotEquals(ERROR, String.valueOf(ppet.getId()), "0");
         return ppet;
     }
 
     public void checkPet(Ppet ppet, boolean exists) throws Exception{
-        if (exists) assertEquals(error, connectionsTools.getJson(baseUrl + "/" + ppet.getId(), get, true), ok);
-        else assertEquals(error, connectionsTools.getJson(baseUrl + "/" + ppet.getId(), get, false), "404");
+        if (exists) assertEquals(ERROR, connectionsTools.getJson(baseUrl + "/" + ppet.getId(), GET, true), OK);
+        else assertEquals(ERROR, connectionsTools.getJson(baseUrl + "/" + ppet.getId(), GET, false), "404");
     }
 
     public void deletePet(Ppet ppet) throws Exception {
-        connectionsTools.getJson(baseUrl + "/" + ppet.getId(), delete, true);
+        connectionsTools.getJson(baseUrl + "/" + ppet.getId(), DELETE, true);
     }
 
 }
